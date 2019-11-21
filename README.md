@@ -16,7 +16,7 @@ Archive Jenkins settings and plugins
 ./jenkins-backup.sh /path/to/jenkins_home archive.tar.gz
 
 # add timestamp suffix
-./jenkins-backup.sh /path/to/jenkins_home backup_`date +"%Y%m%d%H%M%S"`.tar.gz
+./jenkins-backup.sh /path/to/jenkins_home /path/to/destination
 ```
 
 # run with Jenkins Job
@@ -49,7 +49,7 @@ https://github.com/sue445/jenkins-backup-script.git
 ex.
 
 ```bash
-./jenkins-backup.sh $JENKINS_HOME /path/to/backup_`date +"%Y%m%d%H%M%S"`.tar.gz
+./jenkins-backup.sh $JENKINS_HOME /path/to/destination/
 ```
 
 # Operability confirmed
@@ -80,9 +80,7 @@ example
 ```bash
 sudo /etc/init.d/jenkins stop
 cd /path/to/backup_dir
-tar xzvf backup.tar.gz
-sudo cp -R jenkins-backup/* /path/to/jenkins/
-sudo chown jenkins:jenkins -R /path/to/jenkins/
+sudo tar xzvf /path/to/destination/tar_file  -C /
 sudo /etc/init.d/jenkins start
 ```
 
